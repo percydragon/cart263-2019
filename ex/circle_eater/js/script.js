@@ -21,9 +21,15 @@ let avatar = {
 let food = {
   x:0,
   y:0,
-  size:24,
+  vx:0,
+  vy:0,
+  tx:0,
+  ty:0,
+  size:40,
   color:"#8099fa"
 }
+
+let noiseSpeed;
 
 //SETUP() MY DUDES
 function setup() {
@@ -31,13 +37,21 @@ function setup() {
   food.x = random(0,width);
   food.y = random(0,height);
   noCursor();
+
+  food.vx = random(5);
+  food.vy = random(5);
+
+  setInterval(function(){
+    food.vx = random(-10,10);
+    food.vy = random(-10,10);
+  }, 1500);
 }
 
 //DRAW() MY DUDES
 function draw() {
   //making bg
   background("#890192");
-if (!avatar.active) {
+if (!avatar.alive) {
   return;
 }
   //displaying avatar
@@ -56,7 +70,7 @@ function updateAvatar () {
   avatar.x = mouseX;
   avatar.y = mouseY;
 
-  avatar.size = avatar.size - .5;
+  avatar.size = avatar.size - .2;
   avatar.size = constrain(avatar.size,0,avatar.maxSize);
 
   if (avatar.size === 0) {
@@ -92,4 +106,38 @@ function displayFood() {
   fill(food.color);
   ellipse(food.x,food.y,food.size,food.size);
   pop();
+}
+
+//LET'S UPDATE THE FOOD MY DOODS
+//ngl i was gonna use perlin noise from the beginning
+function updateFood() {
+  // noiseSpeed = 90;
+  //
+  // food.x = noiseSpeed * noise(food.tx);
+  // food.y = noiseSpeed * noise(food.ty);
+  //
+  // food.tx += 0.05;
+  // food.ty -= 0.05;
+
+  food.x += food.vx;
+  food.y += food.vy;
+
+  // food.vx +=5 ;
+  // food.vy +=5 ;
+
+
+  // Wrap when player goes off the canvas
+  if (food.x < 0) {
+    food.x += width;
+  }
+  else if (food.x > width) {
+    food.x -= width;
+  }
+
+  if (food.y < 0) {
+    food.y += height;
+  }
+  else if (food.y > height) {
+    food.y -= height;
+  }
 }
