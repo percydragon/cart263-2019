@@ -11,7 +11,7 @@ author, and this description to match your project!
 ******************/
 
 let agents = [];
-const maxSpeed = 15;
+const maxSpeed = 30;
 
 // preload()
 //
@@ -29,7 +29,9 @@ function preload() {
 function setup() {
   createCanvas(windowWidth,windowHeight)
   agents.push(new Eater(mouseX,mouseY,124,0.5));
-  agents.push(new Food(random(width),random(height),random(5),random(5),40,15,184,'#dd77ff'));
+  for (let i = 1; i < 15; i++) {
+    agents.push(new Food(random(width),random(height),random(5),random(5),40,15,184,15,'#dd77ff'));
+  }
 
 }
 
@@ -50,6 +52,4 @@ function draw() {
       agents[0].eat(agents[1]);
     }
   }
-
-
 }

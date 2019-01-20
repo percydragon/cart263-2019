@@ -1,15 +1,21 @@
 class Food extends Agent {
-  constructor (x,y,vx,vy,size,minSize,maxSize,c,alive){
+  constructor (x,y,vx,vy,size,minSize,maxSize,maxSpeed,c,alive){
     super(x,y,random(minSize,maxSize),c,undefined);
     this.vx = vx;
     this.vy = vy;
     this.minSize = minSize;
     this.maxSize = maxSize;
+    this.maxSpeed = maxSpeed;
   }
 
   update() {
-    this.x += this.vx;
-    this.y += this.vy;
+    this.x += constrain(this.vx,-this.maxSpeed,this.maxSpeed);
+    this.y += constrain(this.vy,-this.maxSpeed,this.maxSpeed);
+
+    this.vx *= 1.02;
+    this.vy *= 1.02;
+
+
 
 
     // Wrap when player goes off the canvas
@@ -34,6 +40,8 @@ class Food extends Agent {
     this.y = random(height);
 
     this.size = random(this.minSize,this.maxSize)
+    this.vx *= random(-1.02,1.02);
+    this.vy *= random(-1.02,1.02);
 
   }
 }
