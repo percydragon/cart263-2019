@@ -28,7 +28,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth,windowHeight)
-  agents.push(new Eater(mouseX,mouseY,124,0.5));
+  agents.push(new Eater(mouseX,mouseY,64,0.5));
   for (let i = 1; i < 15; i++) {
     agents.push(new Food(random(width),random(height),random(5),random(5),40,15,184,15,'#dd77ff'));
   }
@@ -47,9 +47,11 @@ function draw() {
   for (let i = 0; i < agents.length; i++) {
     agents[i].update();
     agents[i].display();
+  }
 
-    if (agents[0].collide(agents[1])) {
-      agents[0].eat(agents[1]);
+  for (let i = 1; i < agents.length; i++) {
+    if (agents[0].collide(agents[i])) {
+    agents[0].eat(agents[i]);
     }
   }
 }
