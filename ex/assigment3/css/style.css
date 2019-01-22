@@ -5,7 +5,9 @@ In this case it's just padding and margin to 0
 so the canvas is flush with the top left corner.
 
 **********************************************/
-
+html {
+  display:flex;
+}
 body {
   margin-left: 100px;
   margin-right: 100px;
@@ -28,6 +30,13 @@ div {
 }
 
 .secret {
+  color:black;
+}
+
+.found {
   background-color: yellow;
   color:black;
+}
+
+#secrets-found {
 }

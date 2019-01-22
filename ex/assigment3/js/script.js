@@ -9,17 +9,19 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
+let foundSecrets = 0;
 
 $(document).ready(setup);
 function setup() {
   setInterval(update,500)
   // This code will run when the document is ready!
-  $('span').click(redactedClicked);
+  $('.redacted').click(redactedClicked);
+  $('.secret').on('mouseover', mouseOver);
 }
 
 function update(){
   console.log("Update!");
-  $('span').each(updateSpan);
+  $('.redacted').each(updateSpan);
 }
 
 function updateSpan(){
@@ -37,6 +39,15 @@ function updateSpan(){
 function redactedClicked() {
   $(this).removeClass('revealed');
   $(this).addClass('redacted');
+
+}
+
+function mouseOver(){
+  $(this).removeClass('secret');
+  $(this).addClass('found');
+  foundSecrets ++;
+  $('#secrets-found').text(foundSecrets);
+  $(this).off('mouseover');
 
 }
 $(document).ready(function(){
