@@ -12,6 +12,7 @@ author, and this description to match your project!
 
 let agents = [];
 const maxSpeed = 30;
+let randoColours;
 
 // preload()
 //
@@ -27,10 +28,11 @@ function preload() {
 // Description of setup
 
 function setup() {
-  createCanvas(windowWidth,windowHeight)
+  createCanvas(windowWidth,windowHeight);
+  randoColours = color(random(254),random(254),random(254));
   agents.push(new Eater(mouseX,mouseY,64,0.5));
-  for (let i = 1; i < 15; i++) {
-    agents.push(new Food(random(width),random(height),random(5),random(5),40,15,184,15,'#dd77ff'));
+  for (let i = 1; i < 10; i++) {
+    agents.push(new Food(random(width),random(height),random(5),random(5),40,15,184,maxSpeed,randoColours));
   }
 
 }

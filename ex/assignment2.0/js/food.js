@@ -15,6 +15,17 @@ class Food extends Agent {
     this.vx *= 1.02;
     this.vy *= 1.02;
 
+    let r = random(0,1);
+    if (r < 0.5) {
+      this.vx *= -2;
+    }
+
+    let r2 = random(0,1);
+    if (r2 < 0.5) {
+      this.vy *= -2;
+    }
+
+
 
 
 
@@ -36,8 +47,10 @@ class Food extends Agent {
 
 
   reset() {
+    randoColours = color(random(254),random(254),random(254));
     this.x = random(width);
     this.y = random(height);
+    this.c = randoColours;
 
     this.size = random(this.minSize,this.maxSize)
     this.vx *= random(-1.02,1.02);
