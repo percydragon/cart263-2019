@@ -3,3 +3,22 @@
 This is the style file for this project.
 
 **********************************************/
+html {
+  /* background: */
+}
+
+#bin {
+  position:fixed;
+  right:0%;
+  bottom:0px;
+  overflow: hidden;
+}
+
+.small {
+  width:7em;
+  height:7em;
+}
+
+.draggy {
+  overflow: hidden;
+}
