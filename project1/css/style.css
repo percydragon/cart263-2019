@@ -3,8 +3,21 @@
 This is the style file for this project.
 
 **********************************************/
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 html {
-  /* background: */
+  background: url(../assets/images/bg.jpg) no-repeat;
+  width: auto;
+  height: auto;
+  font-family: 'Indie Flower', cursive;
+  color: white;
+  z-index: -2;
+
+}
+
+
+div {
+  z-index: 1;
 }
 
 #bin {
@@ -14,11 +27,35 @@ html {
   overflow: hidden;
 }
 
+#pButton{
+	height:60px;
+	width: 60px;
+	border: none;
+	background-size: 50% 50%;
+	background-position: center;
+}
+
+.play{background: url('../images/play.png') no-repeat;}
+.pause{background: url('../images/pause.png') no-repeat;}
+
 .small {
+  display: inline-block;
   width:7em;
   height:7em;
+  z-index: 1;
 }
 
 .draggy {
   overflow: hidden;
+  position:absolute;
+}
+
+.icon {
+  display:flex;
+  flex-flow: column wrap;
+  flex-direction: column;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
 }
