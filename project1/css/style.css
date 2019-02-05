@@ -16,27 +16,12 @@ html {
 }
 
 
-div {
-  z-index: 1;
-}
-
 #bin {
   position:fixed;
   right:0%;
   bottom:0px;
   overflow: hidden;
 }
-
-#pButton{
-	height:60px;
-	width: 60px;
-	border: none;
-	background-size: 50% 50%;
-	background-position: center;
-}
-
-.play{background: url('../images/play.png') no-repeat;}
-.pause{background: url('../images/pause.png') no-repeat;}
 
 .small {
   display: inline-block;
