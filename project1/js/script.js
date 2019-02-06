@@ -16,17 +16,31 @@ you try to clean out the computer by putting everything in the trash, but only f
  let $drag;
  let crumplePaper;
  let droppedPaper;
+ let powerUpSfx;
 
  $(document).ready(setup);
 
  function setup() {
+   //OKAY SO THIS IS BECAUSE THE PAGE WOULD LOAD IN SO FAST YOU'D SEE THE UGLY STUFF
+   // AND I FOUND THIS AMAZING REF ON STACKFLOW THAT MADE IT SUPER EASY FOR ME TO FIX THIS
+   // THANK YOU STACKFLOW https://stackoverflow.com/questions/9550760/hide-page-until-everything-is-loaded-advanced
+
+   document.getElementsByTagName("html")[0].style.visibility = "visible";
+
    //designating variables
    $bin = $('#bin');
    $drag = $('.draggy');
 
+
 //designating audio variables for sweet audio sfx
    crumplePaper = new Audio('assets/sounds/paper-throw-1.wav');
    droppedPaper = new Audio('assets/sounds/paper-rustle-4.wav');
+
+//NEATO SFX FOR POWER UP
+
+  // powerUpSfx.play();
+  // console.log("hello")
+
 
 //making sure the draggable images don't cause a scrolling off screen effect
    $drag.draggable({scroll:false});
@@ -36,17 +50,33 @@ you try to clean out the computer by putting everything in the trash, but only f
     drop: onDrop
   });
 
+
   //adding a random change of position for images
   changePosition();
   //adding deletion dialogue popup
   deleteRecycleBin();
 
-  // for (let i = 1; i < 100; i++) {
-  //   let $image = $('<img class="dragy" src="assets/images/' + i + '.png">');
-  //   $('body').append($image);
-  // }
-  //
 
+  //adding in a fade in and out function between pages
+  //because im adding in that sweet sweet boot up sfx
+  //found here https://css-tricks.com/forums/topic/fade-out-between-pages/
+  $('body').css('display', 'none');
+  $('body').fadeIn(1000);
+
+  $('.link').click(function(event) {
+
+  event.preventDefault();
+
+  newLocation = this.href;
+
+  $('body').fadeOut(1000, newpage);
+
+  });
+
+ }
+
+function newpage() {
+  window.location = newLocation;
  }
 
 //the drop event code that tells it what to do when it drops

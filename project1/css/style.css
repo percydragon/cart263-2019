@@ -6,21 +6,41 @@ This is the style file for this project.
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
 html {
-  background: url(../assets/images/bg.jpg) no-repeat;
+  /* VISIBILITY IS TO KEEP THE UNLOADED STUFF HIDDEN UNTIL LOADED IN */
+  visibility:hidden;
+  background-color: black;
   width: auto;
   height: auto;
   font-family: 'Indie Flower', cursive;
   color: white;
   z-index: -2;
-
 }
 
+header {
+  text-align: center;
+  font-size: 3em;
+  padding: 20px;
+  margin-top: 300px;
+}
+
+#background {
+  background: url(../assets/images/bg.jpg) no-repeat;
+}
 
 #bin {
   position:fixed;
   right:0%;
   bottom:0px;
   overflow: hidden;
+}
+
+#powerUp {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: url(https://img.icons8.com/dusk/64/000000/shutdown.png) no-repeat;
+  padding: 40px;
+  width: 0%;
 }
 
 .small {
