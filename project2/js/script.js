@@ -1,5 +1,5 @@
 
-"use strict"
+"use strict";
 /*****************
 
 Abysmal Internet Search
@@ -2330,11 +2330,78 @@ let tvShows = [
       "Óli á Hrauni"
     ];
 
+let strangeWords = [
+  "They see you from the shadows, forever haunting. They know what you are doing at any given moment.",
+  "We all die. The goal isn’t to live forever, the goal is to create something that will.",
+  "Everybody is a book of blood; wherever we're opened, we're red.",
+  "No matter how much you think you love somebody, you'll step back when the pool of their blood edges up too close.",
+  "The zombie looks like a man, walks like a man, eats and otherwise functions fully, yet is devoid of the spark. It represents the nagging doubt that lays deep in the heart of even the most zealous believer: behind all of your pretty songs and stained glass, this is what you really are. Shambling meat. Our true fear of the zombie was never that its bite would turn us into one of them. Our fear is that we are already zombies.",
+  "I lay in bed and thought about how easy it was to hurt a person. It didn't have to be physical. All you had to do was take a good hard kick at something they cared about.",
+  "When I was fourteen, I thought a lot about killing myself—it’s a hobby today, but at age fourteen it was a vocation. On a September morning, just after school started, I’d gotten Diane’s .44 Magnum and held it, babylike, in my lap for hours. What an indulgence it would be, to just blow off my head, all my mean spirits disappearing with a gun blast, like blowing a seedy dandelion apart. But I thought about Diane, and her coming home to my small torso and a red wall, and I couldn’t do it. It’s probably why I was so hateful to her, she kept me from what I wanted the most.",
+  "When you think about it, most of the good ideas came along to make sin a whole lot easier.",
+  "Maybe all the schemes of the devil were nothing compared to what man could think up.",
+  "You sit there, in front of your computer. There's this weight on your shoulders, but you're never quite sure what it is. Your breathing is laboured, and you think to yourself: why does life even matter? It doesn't, so you take the knife and stab it deep into your gut.",
+  "Nothing smells about as potent as the smell of burning bodies. They trick you into thinking there's a good old barbecue down the corner, but in reality it's the chared bodies of your friends.",
+  "When spend all our life preparing to die.",
+  "You don't really miss the person that died, rather you miss what they brought to you. You miss their actions, or there sheer presence; what they had been to you, rather than the person themselves.",
+  "Life is but one bad fall down the side of a cliff after another. It hurts like a bitch, but we still keep trying to climb back up."
+]
+
+let badThoughts;
+
+let $clickButton;
+
+let title;
+
 //all words curtersy of corpora.
-//i just needed random words, let's hope I have enough. 
+//i just needed random words, let's hope I have enough.
 
 $(document).ready(setup);
 
 function setup() {
+  //so what were doing here is that we are setting up the generation button
+  //this way, we have a button readily available to generate words and stuff.
+  $clickButton = $("#click");
+  $clickButton.click(generateRandomTitle)
+}
+
+function generateRandomTitle() {
+  title = "";
+
+  let tvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
+
+  let videoSites = videoHostingSites[Math.floor(Math.random() * videoHostingSites.length)];
+
+  let artMov = artIsms[Math.floor(Math.random() * artIsms.length)];
+
+  let adj = adjs[Math.floor(Math.random() * adjs.length)];
+
+  let words = weirdWords[Math.floor(Math.random() * weirdWords.length)];
+
+  let zeldaChars = zeldaWWCharacters[Math.floor(Math.random() * zeldaWWCharacters.length)];
+
+  title = title +" " + tvShow + " "+ videoSites+ " " + artMov + " " + adj+ " " + words + " "+ zeldaChars;
+  $("#title").empty();
+  $("#title").append(title);
+  theBadThoughtsTM();
+
+
+}
+
+
+function speakRandomText(words) {
+  let name = words;
+  let options = {
+    rate: 0.5,
+    pitch: -1
+  }
+  responsiveVoice.speak(name, 'UK English Female');
+}
+
+function theBadThoughtsTM() {
+  badThoughts = "";
+  let badWords = strangeWords[Math.floor(Math.random() * strangeWords.length)];
+   badThoughts = badWords;
+   speakRandomText(badThoughts);
 
 }

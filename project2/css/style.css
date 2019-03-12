@@ -3,3 +3,55 @@
 This is the style file for this project.
 
 **********************************************/
+html {
+  background: url(../assets/images/flower.jpg) repeat;
+
+}
+#click {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 4em;
+  font-family: fantasy;
+  padding: 20px;
+  background-color: grey;
+  width: 300px;
+  border-radius: 5px;
+}
+
+#title {
+  text-align: center;
+}
+
+article {
+  width: 500px;
+  height: auto;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #fcad94;
+  border-radius: 5px;
+}
+
+/* code provided by w3 animated button */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate3 */
+/* I just wanted to make fancy clickable buttons okay */
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

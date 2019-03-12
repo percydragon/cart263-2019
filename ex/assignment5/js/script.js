@@ -10,7 +10,8 @@ author, and this description to match your project!
 
 ******************/
 
-let animals = ["aardvark",
+let animals = [
+      "aardvark",
       "alligator",
       "alpaca",
       "antelope",
