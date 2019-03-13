@@ -2367,7 +2367,7 @@ function setup() {
 
 function generateRandomTitle() {
   title = "";
-
+// okay so here are all the randomization for the arrays.
   let tvShow = tvShows[Math.floor(Math.random() * tvShows.length)];
 
   let videoSites = videoHostingSites[Math.floor(Math.random() * videoHostingSites.length)];
@@ -2385,10 +2385,20 @@ function generateRandomTitle() {
   $("#title").append(title);
   theBadThoughtsTM();
 
-
 }
 
+//setting random position to the images
+ function changePosition() {
+   $('.change').each(randomPosition);
+ }
 
+//this gives the images a random position on screen
+ function randomPosition(){
+   $(this).offset({top:Math.random()*600, left:Math.random()*1200});
+ }
+ //essentially i just took this code from another assignment to change position of the image
+
+//my synthesized voice thing that speaks bad thoughts that dont match the random title generator
 function speakRandomText(words) {
   let name = words;
   let options = {
@@ -2398,10 +2408,16 @@ function speakRandomText(words) {
   responsiveVoice.speak(name, 'UK English Female');
 }
 
+//this is the bad thought randomizer, that randomizes the bad thoughts in the array, and picks one at random to say
 function theBadThoughtsTM() {
   badThoughts = "";
   let badWords = strangeWords[Math.floor(Math.random() * strangeWords.length)];
    badThoughts = badWords;
    speakRandomText(badThoughts);
+
+   for (var i = 0; i < 200; i++) {
+
+   }
+   changePosition();
 
 }

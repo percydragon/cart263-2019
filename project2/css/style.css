@@ -22,6 +22,10 @@ html {
   text-align: center;
 }
 
+.change {
+  background-image: url(../assets/images/Sayori_Hanging.png);
+}
+
 article {
   width: 500px;
   height: auto;
