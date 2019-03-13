@@ -5,6 +5,7 @@ This is the style file for this project.
 **********************************************/
 html {
   background: url(../assets/images/flower.jpg) repeat;
+  overflow: hidden;
 
 }
 #click {
@@ -16,6 +17,7 @@ html {
   background-color: grey;
   width: 300px;
   border-radius: 5px;
+  z-index: 1;
 }
 
 #title {
@@ -23,7 +25,8 @@ html {
 }
 
 .change {
-  background-image: url(../assets/images/Sayori_Hanging.png);
+  z-index: -1;
+  position: relative;
 }
 
 article {
@@ -33,6 +36,7 @@ article {
   margin: 0 auto;
   background-color: #fcad94;
   border-radius: 5px;
+  z-index: 0;
 }
 
 /* code provided by w3 animated button */
@@ -50,6 +54,8 @@ article {
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  z-index: 1;
+
 }
 
 .button:hover {background-color: #3e8e41}

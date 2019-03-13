@@ -2394,7 +2394,7 @@ function generateRandomTitle() {
 
 //this gives the images a random position on screen
  function randomPosition(){
-   $(this).offset({top:Math.random()*600, left:Math.random()*1200});
+   $(this).offset({top:Math.random()*400, left:Math.random()*700});
  }
  //essentially i just took this code from another assignment to change position of the image
 
@@ -2415,7 +2415,8 @@ function theBadThoughtsTM() {
    badThoughts = badWords;
    speakRandomText(badThoughts);
 
-   for (var i = 0; i < 200; i++) {
+   for (var i = 0; i < 1; i++) {
+     $('span').add('img').addClass('change').append('<img src="assets/images/Sayori_Hanging.png">');
 
    }
    changePosition();
