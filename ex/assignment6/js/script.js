@@ -14,6 +14,11 @@ $(document).ready(setup);
 
 function setup() {
   $.getJSON("assets/data/data.json", dataLoaded);
+  //taken from stackoverflow on how to reload page
+  // https://stackoverflow.com/questions/5404839/how-can-i-refresh-a-page-with-jquery
+  $(this).click(function() {
+    location.reload();
+});
 }
 
 function dataLoaded(data) {
@@ -36,11 +41,20 @@ function dataLoaded(data) {
 
 //declaring article
 let article = "a";
+let article2 = "a"
 //adding in an if statement that dictates if the first letter is a vowel, it will be an 'an' instead of an 'a'
+if (adj.charAt(0) === "a" || adj.charAt(0) ===  "e" || adj.charAt(0) === "i" || adj.charAt(0) ===  "o" || adj.charAt(0) ===  "u") {
+  article = "an";
+}
+
+if (room.charAt(0) === "a" || room.charAt(0) === "e" || room.charAt(0) === "i" || room.charAt(0) === "o" || room.charAt(0) === "u") {
+  article2 = "an";
+}
 
 
 // added adjs to the description
-  let description =  `${condiment} ${verb} like a ${adj} ${cat} in a ${room}`;
+//added article to description
+  let description =  `${condiment} ${verb} like ${article} ${adj} ${cat} in ${article2} ${room}`;
   console.log(description);
   $('body').append(description)
 }
