@@ -57,9 +57,19 @@ if (room.charAt(0) === "a" || room.charAt(0) === "e" || room.charAt(0) === "i" |
   let description =  `${condiment} ${verb} like ${article} ${adj} ${cat} in ${article2} ${room}`;
   console.log(description);
   $('body').append(description)
+  letsTalk(description);
 }
 
 function getRandomElement(array) {
   let element = array[Math.floor(Math.random() * array.length)];
   return element;
+}
+
+//i want to add in responsive voice because i think its fun
+function letsTalk(words) {
+  let options = {
+    rate: 1.02,
+    pitch: 0.9
+  }
+  responsiveVoice.speak(words, 'UK English Female', options);
 }
