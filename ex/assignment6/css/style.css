@@ -3,3 +3,21 @@
 This is the style file for this project.
 
 **********************************************/
+/* i just wanted to align the text on screen */
+/* plus i decided to make the page look nicer by adding a background and custom text */
+
+@import url('https://fonts.googleapis.com/css?family=Acme');
+html {
+  background: url(../assets/images/bg2.png) repeat repeat;
+}
+body {
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 25%;
+  padding: 10px;
+  background-color: purple;
+  width: 820px;
+  border-radius: 5px;
+  font-size: 2em;
+  font-family: 'Acme', sans-serif;
+}
