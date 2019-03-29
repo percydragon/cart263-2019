@@ -18,12 +18,25 @@ let frequencies = [
   329.63,
   369.99,
   415.30
-]
+];
 
 let synth;
 let kick;
 let snare;
-let hithat;
+let hihat;
+
+let pattern = [
+  'x',
+  'o',
+  '*',
+  'x*',
+  'xo',
+  'o*',
+  'xo8',
+  ''
+];
+
+let patternIndex = 0;
 
 
 // preload()
@@ -86,7 +99,28 @@ function playNote() {
   synth.play();
 }
 
+function playDrum() {
+  let symbols = pattern[patternIndex];
+
+  if (symbols.indexOf('x') !== -1) {
+    kick.play();
+  }
+
+  if (symbols.indexOf('o') !== -1) {
+    snare.play();
+  }
+
+  if (symbols.indexOf('*') !== -1) {
+    hihat.play();
+}
+patternIndex++;
+if (patternIndex >= pattern.length) {
+  patternIndex = 0;
+  }
+}
+
 function mousePressed() {
   // Start an interval for the notes
   setInterval(playNote,500);
+  setInterval(playDrum,250);
 }
