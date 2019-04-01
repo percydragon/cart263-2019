@@ -10,7 +10,11 @@ author, and this description to match your project!
 
 ******************/
 
+//i was trying to go over the top with silences/rests
+//than i remembered I play music and basically a rest is a lack of frequency
+//so i just add a 0 frequency to the frequencies array. Easy!
 let frequencies = [
+  0,
   220.00,
   246.94,
   277.18,
@@ -25,6 +29,9 @@ let kick;
 let snare;
 let hihat;
 
+//adding in a variable that will allow mousePressed to work only once
+let doOnce = false;
+
 let pattern = [
   'x',
   'o',
@@ -37,6 +44,8 @@ let pattern = [
 ];
 
 let patternIndex = 0;
+
+
 
 
 // preload()
@@ -90,7 +99,6 @@ function setup() {
 // Description of draw()
 
 function draw() {
-
 }
 
 function playNote() {
@@ -120,7 +128,11 @@ if (patternIndex >= pattern.length) {
 }
 
 function mousePressed() {
-  // Start an interval for the notes
-  setInterval(playNote,500);
-  setInterval(playDrum,250);
+
+  if (mousePressed && doOnce === false) {
+    setInterval(playNote,500);
+    setInterval(playDrum,250);
+    //this makes sure that if you click again, it doesn't play again.
+    doOnce = true;
+  }
 }
