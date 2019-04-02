@@ -9,10 +9,11 @@ This is a template. You must fill in the title,
 author, and this description to match your project!
 
 ******************/
-
 //i was trying to go over the top with silences/rests
 //than i remembered I play music and basically a rest is a lack of frequency
 //so i just add a 0 frequency to the frequencies array. Easy!
+
+//http://pages.mtu.edu/~suits/notefreqs.html
 let frequencies = [
   0,
   220.00,
@@ -24,6 +25,7 @@ let frequencies = [
   415.30
 ];
 
+//these are the musical variables
 let synth;
 let kick;
 let snare;
@@ -39,11 +41,19 @@ let pattern = [
   'x*',
   'xo',
   'o*',
-  'xo8',
+  'xo*',
   ''
 ];
 
 let patternIndex = 0;
+
+//adding in effect variables
+
+let tremolo;
+let lowPassFilter;
+
+//i dont want to apply an effect to every drum, so here we go, lets create a group
+let group;
 
 
 
@@ -66,7 +76,8 @@ function setup() {
     source: 'wave',
     options: {
       type: 'sine',
-      frequency: 220
+      frequency: 220,
+      volume:0.3
     }
   });
 
@@ -91,20 +102,42 @@ function setup() {
     }
   });
 
+  //adding in effects
+  tremolo = new Pizzicato.Effects.Tremolo({
+    speed: 7,
+    depth: 0.8,
+    mix: 0.8
+  });
+
+  lowPassFilter = new Pizzicato.Effects.LowPassFilter({
+    frequency: 700,
+    peak: 20,
+    volume: 1.5
+});
+
+//making the group pizzicato
+group = new Pizzicato.Group([snare,hihat,kick]);
+
+//this effect makes the synth sound kinda more like a piano???
+//i think it's cool
+synth.addEffect(tremolo);
+
+//ive been able to make the lowPassFilter filter work to make this kinda vaporwave esque sound???
+//i kinda like it. It sounds sedated and cool.
+group.addEffect(lowPassFilter);
+
+
 }
-
-
-// draw()
-//
-// Description of draw()
-
-function draw() {
-}
+//draw loop is not useful at all in this code so i removed it.
 
 function playNote() {
   let frequency = frequencies[Math.floor(Math.random() * frequencies.length)];
   synth.frequency = frequency;
   synth.play();
+  //this makes it so that the notes loop
+  let duration = Math.floor(random(2,10)) * 120;
+  console.log(duration);
+  setTimeout(playNote, duration);
 }
 
 function playDrum() {
@@ -130,7 +163,9 @@ if (patternIndex >= pattern.length) {
 function mousePressed() {
 
   if (mousePressed && doOnce === false) {
-    setInterval(playNote,500);
+    //instead of what i originally did
+    //i changed it to set timeout, than added another set timeout in playnote, so that way it loops infinitely.
+    setTimeout(playNote,100);
     setInterval(playDrum,250);
     //this makes sure that if you click again, it doesn't play again.
     doOnce = true;
