@@ -3,29 +3,14 @@
 This is the style file for this project.
 
 **********************************************/
-body {
-  background-color: #FF5A5A;
-  height: 100%;
-  font-family: 'tradegothiclt-bold', sans-serif;
-}
 
-h1 {
-  font-size: 5em;
-  color: white;
-  text-transform: uppercase;
+ body {
+  font-family: 'Waiting for the Sunrise', cursive;
+  font-size:30px;
+  margin: 10px 50px;
+  letter-spacing: 6px;
+  font-weight: bold;
 }
-
-span {
-  border-right: .05em solid;
-  animation: caret 1s steps(1) infinite;
-}
-
-@keyframes caret {
-  50% {
-    border-color: transparent;
-  }
-}
-
 
 #notepad {
   width: 70vw;

@@ -10,53 +10,107 @@ I'm gonna go about this kinda slowly, but I feel like it would be an interesting
 idea to implement, idk? Like some evil 80s MySpace or something.
 ID LOVE TO MAKE IT LIKE STACKOVERFLOW'S APRIL FOOLS THAT'D BE GREAT
 ******************/
+
 //gonna impliment the note pad aspect, than I'll try to combine notepad and typeWriter
 // in a sort of responsive manner
+
+//this is the notepad code, but it's not reacting appropriately with the typewriter code, so maybe there's more to this than originally thought?
+//maybe its the fact that its a different type of js? which may be the case,
+//nonetheless, ill have to figure out how to fix such a thing
+
+
+$(document).ready(function () {
+
+  // Load the notes data (if there is any)
+  let contents = localStorage.getItem('notes');
+  // If it's not null, then there's data to display
+  if (contents !== null) {
+    // Set the HTML of the notepad to the data loaded
+    $('#notepad').html(contents);
+  }
+
+  // Listen for keypresses in the notepad and save the data each time
+  $('#notepad').on('keyup', function () {
+    // Grab the current HTML of the notepad
+    let currentNotes = $('#notepad').html();
+    // Save it to localStorage
+    localStorage.setItem('notes',currentNotes);
+  });
+
+  typewriter();
+
+  $(document).on('click',changeTextOnClick);
+
+
+
+});
 
 
 //code found here
 //https://css-tricks.com/snippets/css/typewriter-effect/
 //this is for typewriter effect
-document.addEventListener('DOMContentLoaded',function(event){
-  // array with texts to type in typewriter
-  var dataText = ["Hello darling, how do you do on this fine day?", "I know you don't want to stay for long, but let me incentivise you.",
-  "Right here is a list of your internet browsing history, do you like that?"];
+var fullText = [
+  "There are only 10 types of people in the world:",
+  "Those who understand binary, and those who don't",
+  "HRE BY KINGDOM COME",
+  "idk",
+  "mEME"
 
-  // type one text in the typwriter
-  // keeps calling itself until the text is finished
-  function typeWriter(text, i, fnCallback) {
-    // chekc if text isn't finished yet
-    if (i < (text.length)) {
-      // add next character to h1
-     document.querySelector("h1").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
 
-      // wait for a while and call this function again for next character
-      setTimeout(function() {
-        typeWriter(text, i + 1, fnCallback)
-      }, 100);
-    }
-    // text finished, call callback if there is a callback function
-    else if (typeof fnCallback == 'function') {
-      // call callback after timeout
-      setTimeout(fnCallback, 700);
-    }
+];
+
+/*var aText = [
+"There are only 10 types of people in the world:",
+"Those who understand binary, and those who don't"
+];*/
+var aText = [fullText[0], ""];
+var counter =0;
+var iSpeed = 100; // time delay of print out
+var iIndex = 0; // start printing array at this posision
+var iArrLength = aText[0].length; // the length of the text array
+var iScrollAt = 20; // start scrolling up at this many lines
+
+var iTextPos = 0; // initialise text position
+var sContents = ''; // initialise contents variable
+var iRow; // initialise current row
+
+function typewriter()
+{
+//  iIndex = 0;
+ sContents =  ' ';
+ iRow = Math.max(0, iIndex-iScrollAt);
+ var destination = document.getElementById("typedtext");
+
+ while ( iRow < iIndex ) {
+  sContents += aText[iRow++];// + '<br />';
+ }
+
+ destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
+
+ if ( iTextPos++ == iArrLength ) {
+  iTextPos = 0;
+  iIndex++;
+  if ( iIndex != aText.length ) {
+   iArrLength = aText[iIndex].length;
+   setTimeout("typewriter()", 500);
   }
-  // start a typewriter animation for a text in the dataText array
-   function StartTextAnimation(i) {
-     if (typeof dataText[i] == 'undefined'){
-        setTimeout(function() {
-          StartTextAnimation(0);
-        }, 20000);
-     }
-     // check if dataText[i] exists
-    if (i < dataText[i].length) {
-      // text exists! start typewriter animation
-     typeWriter(dataText[i], 0, function(){
-       // after callback (and whole text has been animated), start next text
-       StartTextAnimation(i + 1);
-     });
-    }
-  }
-  // start the text animation
-  StartTextAnimation(0);
-});
+ } else {
+  setTimeout("typewriter()", iSpeed);
+ }
+}
+
+function changeTextOnClick() {
+  $('#typedtext').empty();
+   iSpeed = 100; // time delay of print out
+   iIndex = 0; // start printing array at this posision
+   iArrLength = aText[0].length; // the length of the text array
+   iScrollAt = 20; // start scrolling up at this many lines
+
+   iTextPos = 0; // initialise text position
+   sContents = '';
+
+counter++;
+    aText = [fullText[counter], ""];
+  typewriter();
+
+}
