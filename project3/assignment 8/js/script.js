@@ -20,6 +20,8 @@ ID LOVE TO MAKE IT LIKE STACKOVERFLOW'S APRIL FOOLS THAT'D BE GREAT
 
 
 $(document).ready(function () {
+  addButton("meme");
+
 
   // Load the notes data (if there is any)
   let contents = localStorage.getItem('notes');
@@ -40,7 +42,6 @@ $(document).ready(function () {
   typewriter();
 
   $(document).on('click',changeTextOnClick);
-
 
 
 });
@@ -64,7 +65,7 @@ var fullText = [
 "Those who understand binary, and those who don't"
 ];*/
 var aText = [fullText[0], ""];
-var counter =0;
+var counter = 0;
 var iSpeed = 100; // time delay of print out
 var iIndex = 0; // start printing array at this posision
 var iArrLength = aText[0].length; // the length of the text array
@@ -74,9 +75,11 @@ var iTextPos = 0; // initialise text position
 var sContents = ''; // initialise contents variable
 var iRow; // initialise current row
 
+
+
 function typewriter()
 {
-//  iIndex = 0;
+ iIndex = 0;
  sContents =  ' ';
  iRow = Math.max(0, iIndex-iScrollAt);
  var destination = document.getElementById("typedtext");
@@ -84,9 +87,7 @@ function typewriter()
  while ( iRow < iIndex ) {
   sContents += aText[iRow++];// + '<br />';
  }
-
- destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
-
+  destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "_";
  if ( iTextPos++ == iArrLength ) {
   iTextPos = 0;
   iIndex++;
@@ -112,5 +113,23 @@ function changeTextOnClick() {
 counter++;
     aText = [fullText[counter], ""];
   typewriter();
+}
 
+//adding in buttons for people to pick and choose different things for
+function addButton(label) {
+  let button = $('<div class="guess"></div>');
+  button.text(label);
+  button.button();
+  button.on('click', function() {
+    // if ($(this).text() === ) {
+    //   console.log("Correct!");
+    //   $('.guess').remove();
+    //   setTimeout(newRound,500);
+    // }
+    // else {
+    //   console.log("Wrong!");
+    //   $(this).effect('shake');
+    // }
+  });
+  $('body').append(button);
 }
