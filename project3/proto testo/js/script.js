@@ -11,26 +11,26 @@ author, and this description to match your project!
 ******************/
 let answer;
 let text;
-let button = $('<div class="guess"></div>');
-const NUM_OPTIONS = 2;
 $(document).ready(function () {
   //im gonna put in switch states here
   beginning();
 });
 
-function addButton(label) {
+function addButton(label , seq) {
+  let button = $('<div class="guess"></div>');
   button.text(label);
   button.button();
   button.on('click', function() {
-    // if ($(this).text() === ) {
-    //   console.log("Correct!");
-    //   $('.guess').remove();
-    //   setTimeout(newRound,500);
-    // }
-    // else {
-    //   console.log("Wrong!");
-    //   $(this).effect('shake');
-    // }
+    switch (seq) {
+      case 1:
+          movingOn();
+          break;
+      case 2:
+          notMovingOn();
+          break;
+      default:
+
+    }
   });
   $('body').append(button);
 }
@@ -45,20 +45,23 @@ function beginning() {
     "cat"]
   text = "Hello, my name is KATHERINE. Welcome to your stay at []";
   $('p').append(text)
-  addButton(dokie)
+  addButton(dokie, 1);
+  addButton("hello", 2);
 }
 
 function movingOn() {
-  let thanks;
-  let noThx;
+  $('.guess').remove();
   $('p').empty();
   text = "Ah, cool, good to hear that then. I'm glad you're enjoying your stay here. I hope you have a wonderful time"
   $('p').append(text);
+  addButton("meme");
+  addButton("Hello")
 }
 
 function notMovingOn() {
+  $('.guess').remove();
   $('p').empty();
   text = "Oh... Okay then I guess. I'm not really happy with these sorts of things, but I guess I can live with that."
   $('p').append(text);
-  addButton("Meme")
+  addButton("Meme");
 }
