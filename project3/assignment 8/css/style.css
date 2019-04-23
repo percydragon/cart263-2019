@@ -14,7 +14,7 @@ html {
   font-weight: bold;
 }
 
-#notepad {
+/* #notepad {
   width: 70vw;
   height: 70vh;
   font-family: Courier, monospace;
@@ -23,6 +23,6 @@ html {
   margin: 0 auto;
   background: rgb(250,250,100);
   padding: 50px;
-}
+} */
 
 /* Start http://www.cursors-4u.com */ * {cursor: url(http://ani.cursors-4u.net/symbols/sym-8/sym755.ani), url(http://ani.cursors-4u.net/symbols/sym-8/sym755.png), auto !important;} /* End http://www.cursors-4u.com */
