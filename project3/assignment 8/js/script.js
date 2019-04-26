@@ -112,14 +112,11 @@ function addButton(label , seq) {
           anythingElse();
           break;
 
-      case 13:
-          relaxingMusic();
-          break;
-
       case 14:
           whyAssigned();
           break;
 
+      case 13:
       case 15:
       case 19:
       case 21:
@@ -286,8 +283,8 @@ function changedText(val) {
     letsTalk(text);
     $('p').append(text);
   }
-  addButton("I understand", console.log("but that's not right"), 15);
-  addButton("I understand", console.log("Why can't I do anything else?"), 15);
+  addButton("I understand", 15);
+  addButton("I understand", 15);
 }
 
 function whatIsUp(val) {
