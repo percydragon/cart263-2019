@@ -18,19 +18,29 @@
   src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
   integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
+  <!-- adding responsive voice -->
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
 
   <!-- My script(s) -->
   <script src="js/script.js"></script>
-  <script src="js/cursor.js"></script>
+  <script src="./Pizzicato.js"></script>
+  <!-- the sparkle effect was now allowing my cursor to work for some reason -->
+  <!-- <script src="js/cursor.js"></script> -->
 </head>
 
-<body>
+<body id = "box">
   <!-- HTML would go here if needed. -->
-  <article>
-    <div id="typedtext"></div>
-    <p></p>
-  </article>
+
+  <span>
+    <h1>Welcome to Chartreuse Industries</h1>
+    <div id ="click" class="button">Login</div>
+  </span>
+
   <div id="notepad" contenteditable></div>
+  <div id="typedtext"></div>
+  <p></p>
 
 </body>
 

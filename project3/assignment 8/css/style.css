@@ -3,8 +3,11 @@
 This is the style file for this project.
 
 **********************************************/
+@import url('https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise');
 html {
   background: url(../assets/images/bg.png) repeat;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
  body {
   font-family: 'Waiting for the Sunrise', cursive;
@@ -12,8 +15,30 @@ html {
   margin: 10px 50px;
   letter-spacing: 6px;
   font-weight: bold;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
+#box {
+  background: rgba(169, 197, 242, 0.5);
+  width: auto;
+  height: 800px;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+#click {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 4em;
+  /* font-family: fantasy; */
+  padding: 20px;
+  background-color: pink;
+  width: 300px;
+  border-radius: 5px;
+  z-index: 1;
+}
 /* #notepad {
   width: 70vw;
   height: 70vh;
@@ -24,6 +49,37 @@ html {
   background: rgb(250,250,100);
   padding: 50px;
 } */
+
+/* code provided by w3 animated button */
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate3 */
+/* I just wanted to make fancy clickable buttons okay */
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: pink;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px purple;
+  z-index: 1;
+
+}
+
+.button:hover {background-color: pink}
+
+.button:active {
+  background-color: pink;
+  box-shadow: 0 5px purple;
+  transform: translateY(4px);
+}
+
+.guess {
+  margin-top: 10px;
+}
 
 /* Start http://www.cursors-4u.com */
 * {cursor: url(http://ani.cursors-4u.net/symbols/sym-8/sym755.ani), url(http://ani.cursors-4u.net/symbols/sym-8/sym755.png), auto !important;}
